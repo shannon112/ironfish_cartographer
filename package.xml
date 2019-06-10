@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>husky_cartographer_navigation</name>
+  <name>ironfish_cartographer_navigation</name>
   <version>0.0.0</version>
-  <description>Launch files and code for autonomous navigation of the Husky using Google Cartographer</description>
+  <description>Launch files and code for autonomous navigation of the ironfish using Google Cartographer</description>
   <author email="abhattacharjee@clearpathrobotics.com">Aditya Bhattacharjee</author>
   <maintainer email="abhattacharjee@clearpathrobotics.com">Aditya Bhattacharjee</maintainer>
   <license>BSD</license>

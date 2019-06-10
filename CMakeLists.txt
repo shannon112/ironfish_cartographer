@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(husky_cartographer_navigation)
+project(ironfish_cartographer_navigation)
 
 find_package(catkin REQUIRED COMPONENTS roslaunch)
 
