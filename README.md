@@ -39,6 +39,8 @@ To adapt this demo to your own Husky, you may need to clone the [husky_cartograp
   7. To save the generated map, you can run the map_saver utility:
 
      `rosrun map_server map_saver -f <filename>`
+     `rosrun map_server map_saver -f gridmap --occ 65 --free 20`
+     https://github.com/googlecartographer/cartographer_ros/issues/475
 
 #### Tuning Cartographer
 
