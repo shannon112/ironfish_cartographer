@@ -51,3 +51,12 @@ For more information on tuning, click [here](http://google-cartographer-ros.read
 [1] T. Coroiu and O. Hinton, "A Platform for Indoor Localisation,
 Mapping, and Data Collection using an
 Autonomous Vehicle," M.S. thesis, Lund Univ., Lund, Sweden, 2017.
+
+```
+sudo apt-get install ros-melodic-teleop-twist-keyboard
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+```
+通常使用命令 rospack profile 来使得这个新的目录能够在ROS中被查找到： 
+rospack file
+```
