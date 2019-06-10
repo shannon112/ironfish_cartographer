@@ -60,3 +60,17 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 通常使用命令 rospack profile 来使得这个新的目录能够在ROS中被查找到： 
 rospack file
 ```
+SLAM create 2d grid map
+```
+wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/cartographer_paper_deutsches_museum.bag
+roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloads/cartographer_paper_deutsches_museum.bag
+```
+offline save .pbstream map and doing the localization task
+```
+wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/b2-2016-04-05-14-44-52.bag
+wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/b2-2016-04-27-12-31-41.bag
+roslaunch cartographer_ros offline_backpack_2d.launch bag_filenames:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
+roslaunch cartographer_ros demo_backpack_2d_localization.launch \
+   load_state_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag.pbstream \
+   bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag
+```
