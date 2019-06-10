@@ -74,3 +74,17 @@ roslaunch cartographer_ros demo_backpack_2d_localization.launch \
    load_state_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag.pbstream \
    bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag
 ```
+grid+.pbstream map using same bag (two map could perfectly overlap)
+```
+mapping bag: b2-2016-04-05-14-44-52.bag
+testing bag: b2-2016-04-27-12-31-41.bag
+
+roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
+rosrun map_server map_saver -f gridmapb2 --occ 65 --free 20
+rosrun map_server map_server gridmapb2.yaml
+
+roslaunch cartographer_ros offline_backpack_2d.launch bag_filenames:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
+roslaunch cartographer_ros demo_backpack_2d_localization.launch \
+   load_state_filename:=/home/shannon/Documents/ros-kinetic/src/ironfish_cartographer_navigation/map/b2-2016-04-05-14-44-52.bag.pbstream \
+   bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag
+```
