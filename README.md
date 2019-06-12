@@ -88,3 +88,11 @@ roslaunch cartographer_ros demo_backpack_2d_localization.launch \
    load_state_filename:=/home/shannon/Documents/ros-kinetic/src/ironfish_cartographer_navigation/map/b2-2016-04-05-14-44-52.bag.pbstream \
    bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag
 ```
+save .pbstream state file
+```
+# Finish the first trajectory. No further data will be accepted on it.
+rosservice call /finish_trajectory 0
+
+# Ask Cartographer to serialize its current state.
+rosservice call /write_state ${HOME}/Downloads/b3-2016-04-05-14-14-00.bag.pbstream
+```
