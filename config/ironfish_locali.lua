@@ -12,11 +12,11 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-include "freight.lua"
+include "ironfish_seperate.lua"
 
 TRAJECTORY_BUILDER.pure_localization_trimmer = {
   max_submaps_to_keep = 3,
 }
-POSE_GRAPH.optimize_every_n_nodes = 100
+POSE_GRAPH.optimize_every_n_nodes = 20
 
 return options

@@ -12,6 +12,11 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+-- cartographer: imu+laser
+-- odom->base_footprint: cartographer
+-- map->odom: cartographer
+-- (CANNOT broadcast self odom tf)
+
 include "map_builder.lua"
 include "trajectory_builder.lua"
 
@@ -19,14 +24,14 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = "base_link",
-  published_frame = "odom",
-  odom_frame = "odom",
-  provide_odom_frame = false,
+  tracking_frame = "base_imu_link", --imu usage
+  published_frame = "base_footprint", --using carto odom (to)
+  odom_frame = "odom",  --using carto odom (from)
+  provide_odom_frame = true, --using carto odom (yes)
   publish_frame_projected_to_2d = false,
-  use_odometry = false,
-  use_nav_sat = false,
-  use_landmarks = false,
+  use_odometry = false, --using carto odom (yes)
+  use_nav_sat = false, --using outside gps (no)
+  use_landmarks = false, --using outside landmark (no)
   num_laser_scans = 1,
   num_multi_echo_laser_scans = 0,
   num_subdivisions_per_laser_scan = 1,
@@ -46,9 +51,9 @@ MAP_BUILDER.use_trajectory_builder_2d = true
 
 TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 1
 
-TRAJECTORY_BUILDER_2D.min_range = 0.3
-TRAJECTORY_BUILDER_2D.missing_data_ray_length = 2.
-TRAJECTORY_BUILDER_2D.use_imu_data = true
+TRAJECTORY_BUILDER_2D.min_range = 0.1 -- laser threhold
+TRAJECTORY_BUILDER_2D.missing_data_ray_length = 1. -- laser threhold
+TRAJECTORY_BUILDER_2D.use_imu_data = true  --imu usage
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 10
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 15
 

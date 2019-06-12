@@ -14,15 +14,16 @@
 <launch>
   <!--load state map (.pbstream)-->
   <arg name="map_filename" default="$(find ironfish_cartographer_navigation)/map/test.pbstream"/>
+  <!--load lua configuration file (.lua)-->
+  <arg name="lua_filename" default="ironfish_locali.lua"/>
 
   <include file="$(find ironfish_cartographer_navigation)/launch/ironfish_nav_blank.launch"/>
 
   <!--runing cartographer slam-->
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
-          -configuration_directory
-              $(find ironfish_cartographer_navigation)/config
-          -configuration_basename ironfish.lua
+          -configuration_directory $(find ironfish_cartographer_navigation)/config
+          -configuration_basename $(arg lua_filename)
           -load_state_filename $(arg map_filename)"
       output="screen">
       <remap from="imu" to="imu/data" />

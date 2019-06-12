@@ -22,7 +22,7 @@
       type="cartographer_node" args="
           -configuration_directory
               $(find ironfish_cartographer_navigation)/config
-          -configuration_basename ironfish.lua"
+          -configuration_basename ironfish_allcarto.lua"
       output="screen">
     <remap from="imu" to="imu/data" />
     <remap from="odom" to="ironfish_diff_drive_controller/odom" />
