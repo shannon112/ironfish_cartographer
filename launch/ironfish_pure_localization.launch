@@ -12,10 +12,13 @@
 -->
 
 <launch>
+  <!--sim or real-->
+  <arg name="env" default="false"/>
   <!--load state map (.pbstream)-->
   <arg name="map_filename" default="$(find ironfish_cartographer_navigation)/map/test.pbstream"/>
   <!--load lua configuration file (.lua)-->
-  <arg name="lua_filename" default="ironfish_locali.lua"/>
+  <arg name="lua_filename" default="ironfish_allcarto_locali.lua" if="$(arg env)"/> <!--or hybrid-->
+  <arg name="lua_filename" default="ironfish_seperate_locali.lua" unless="$(arg env)"/>
 
   <include file="$(find ironfish_cartographer_navigation)/launch/ironfish_nav_blank.launch"/>
 
@@ -26,7 +29,7 @@
           -configuration_basename $(arg lua_filename)
           -load_state_filename $(arg map_filename)"
       output="screen">
-      <remap from="imu" to="imu/data" />
+      <remap from="imu" to="imu" />
       <remap from="odom" to="ironfish_diff_drive_controller/odom" />
   </node>
 

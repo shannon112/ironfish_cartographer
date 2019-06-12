@@ -15,6 +15,7 @@
       <arg name="rvizconfig" value="$(arg rvizconfig)"/>
       <arg name="rviz" value="$(arg rviz)"/>
       <arg name="rqt_steering" value="$(arg rqt_steering)"/>
+      <arg name="diffconfig" default="$(find ironfish_ros_control)/config/ironfish_ros_control_real_fusion.yaml"/>
     </include>
     <group if="$(arg dual_scan)">
       <include file="$(find ironfish_sensors)/launch/urg_dual.launch"/>
