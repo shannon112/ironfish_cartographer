@@ -96,3 +96,9 @@ rosservice call /finish_trajectory 0
 # Ask Cartographer to serialize its current state.
 rosservice call /write_state ${HOME}/Downloads/b3-2016-04-05-14-14-00.bag.pbstream
 ```
+pure localization bug -> checkout cartographer and cartographer_ros branch to master, then re-build
+https://github.com/googlecartographer/cartographer/issues/1368   
+https://github.com/googlecartographer/cartographer_ros/issues/1122   
+
+because simulator would brocast odom indeed, so only seperate mode can be used  
+if on real robot ros_control could turn off tf brocast case by case  
