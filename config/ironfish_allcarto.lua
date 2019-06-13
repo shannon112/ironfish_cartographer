@@ -53,7 +53,7 @@ TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 1
 
 TRAJECTORY_BUILDER_2D.min_range = 0.1 -- laser threhold
 TRAJECTORY_BUILDER_2D.missing_data_ray_length = 1. -- laser threhold
-TRAJECTORY_BUILDER_2D.use_imu_data = true  --imu usage
+TRAJECTORY_BUILDER_2D.use_imu_data = false  --imu usage
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 10
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 15
 
