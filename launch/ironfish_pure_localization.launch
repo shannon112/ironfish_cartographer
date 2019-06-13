@@ -15,12 +15,15 @@
   <!--sim or real-->
   <arg name="env" default="false"/>
   <!--load state map (.pbstream)-->
-  <arg name="map_filename" default="$(find ironfish_cartographer_navigation)/map/test.pbstream"/>
+  <arg name="map_filename" default="$(find ironfish_cartographer_navigation)/map/test.pbstream" unless="$(arg env)"/>
+  <arg name="map_filename" default="$(find ironfish_cartographer_navigation)/map/iceira3F.pbstream" if="$(arg env)"/> 
   <!--load lua configuration file (.lua)-->
-  <arg name="lua_filename" default="ironfish_allcarto_locali.lua" if="$(arg env)"/> <!--or hybrid-->
+  <arg name="lua_filename" default="ironfish_hybrid_locali.lua" if="$(arg env)"/> <!--allocarto or hybrid-->
   <arg name="lua_filename" default="ironfish_seperate_locali.lua" unless="$(arg env)"/>
 
-  <include file="$(find ironfish_cartographer_navigation)/launch/ironfish_nav_blank.launch"/>
+  <include file="$(find ironfish_cartographer_navigation)/launch/ironfish_nav_blank.launch">
+    <arg name="env" value="$(arg env)"/>
+  </include>
 
   <!--runing cartographer slam-->
   <node name="cartographer" pkg="cartographer_ros"
