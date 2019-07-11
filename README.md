@@ -94,8 +94,9 @@ save .pbstream state file
 rosservice call /finish_trajectory 0
 
 # Ask Cartographer to serialize its current state.
-rosservice call /write_state ${HOME}/Downloads/b3-2016-04-05-14-14-00.bag.pbstream
+rosservice call /write_state "{filename: '${HOME}/Downloads/map.bag.pbstream', include_unfinished_submaps: 1}"
 ```
+
 pure localization bug -> checkout cartographer and cartographer_ros branch to master, then re-build
 https://github.com/googlecartographer/cartographer/issues/1368   
 https://github.com/googlecartographer/cartographer_ros/issues/1122   
