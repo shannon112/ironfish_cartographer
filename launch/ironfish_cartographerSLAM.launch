@@ -20,8 +20,6 @@
   <arg name="lua_filename" default="ironfish_allcarto.lua" if="$(arg env)"/> <!--or hybrid-->
   <arg name="lua_filename" default="ironfish_seperate.lua" unless="$(arg env)"/>
 
-
-  <param name="/use_sim_time" value="false"/>
   <!-- Run Cartographer Node -->
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
