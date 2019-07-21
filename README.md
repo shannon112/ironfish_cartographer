@@ -103,3 +103,5 @@ https://github.com/googlecartographer/cartographer_ros/issues/1122
 
 because simulator would brocast odom indeed, so only seperate mode can be used  
 if on real robot ros_control could turn off tf brocast case by case  
+
+moreover localization only work on release 1.0.0 tag
